@@ -7,3 +7,7 @@ export const createHtmlNode = ({node, attr}) => {
 export const portalRender = (parent, child) => {
     parent.appendChild(child);
 };
+
+export const createFragment = (HTMLText) => {
+    return document.createRange().createContextualFragment(HTMLText);
+};

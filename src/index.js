@@ -1,6 +1,7 @@
-import main from './components/pages/main/main';
-import { createHtmlNode, portalRender } from "../utils/helpers";
+import singleton from './components/pages/Singelton/Singelton'
+import { createHtmlNode, createFragment, portalRender } from "../utils/helpers";
 
 const root = document.getElementById('root');
 
-portalRender(root, createHtmlNode(main()));
+portalRender(root, createFragment(singleton));
+
