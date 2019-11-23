@@ -6,7 +6,28 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rimraf dist && webpack --config config/webpck.config.js",
-    "start": "webpack-dev-server --config config/webpack.config.dev.js"
+    "start": "webpack-dev-server --config config/webpack.config.dev.js",
+    "test-js": "eslint --config .eslintrc.js index/*.js",
+    "test-css": "stylelint --config .stylelintrc main/*.css"
+  },
+  "eslintIgnore": [
+    "*dist",
+    "*node_modules"
+  ],
+  "lint-staged": {
+    "*.js": [
+      "eslint",
+      "git add"
+    ],
+    "*.{css,scss}": [
+      "stylelint",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "author": "Tupota Valentyn",
   "license": "MIT",
@@ -25,7 +46,11 @@
   },
   "dependencies": {
     "@babel/core": "^7.7.4",
+    "eslint": "^6.7.0",
     "html-loader": "^0.5.5",
-    "node-html-parser": "^1.1.16"
+    "husky": "^3.1.0",
+    "lint-staged": "^9.4.3",
+    "node-html-parser": "^1.1.16",
+    "stylelint": "^12.0.0"
   }
 }
